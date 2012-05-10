@@ -5,7 +5,7 @@ development:
   database: food_tracker_development
   pool: 5
   username: postgres
-  password: root
+  password: password
 
 test:
   adapter: postgresql
@@ -14,5 +14,5 @@ test:
   database: food_tracker_test
   pool: 5
   username: postgres
-  password: root
+  password: password
 
