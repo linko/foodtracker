@@ -1,3 +1,43 @@
 // Place all the styles related to the activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.activities {
+  hr {
+    margin: 5px 0px;
+  }
+
+  dl {
+    margin-left: 80px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+    &.dl-horizontal {
+      margin-left: 0px;
+    }
+
+    ul {
+      margin-bottom: 0px;
+    }
+  }
+
+  .activity {
+    margin-top: 15px;
+    .span3 {
+      margin-left: 0px;
+    }
+
+    .date {
+      margin-top: 5px;
+    }
+
+    .span3:first-child {
+      margin-left: 40px;
+      width: 240px;
+    }
+  }
+
+
+}
+
+
