@@ -9,7 +9,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.latest period_start = 2.weeks.ago.to_date, period_end = Date.today.to_date
-    activities = Activity.select("to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("updated_at BETWEEN ? and ? ",period_start, period_end ).group("to_char(updated_at, 'YYYY-MM-DD'), category_id, description")
+    activities = Activity.select("to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("updated_at BETWEEN ? and NOW() ",period_start ).group("to_char(updated_at, 'YYYY-MM-DD'), category_id, description")
     activities_by_date = activities.inject(Hash.new{|h,k| h[k] = [] }) {|map, object| map[object.date] << [object.category_id, object.description]; map }
 
     activities_by_category = {}
