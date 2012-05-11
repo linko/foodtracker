@@ -5,5 +5,9 @@ class ActivitiesController < ApplicationController
     create!{ collection_path }
   end
 
+  def collection
+    @collection = Activity.latest
+  end
+
 
 end

@@ -5,60 +5,30 @@
       %small.pull-right= link_to "ADD", new_activity_path, :class => 'btn btn-large btn-primary'
 
   .activities.well
-    .activity
-      %hr
-      .row.show-grid
-        .span3
-          %h3 Sunday
-        .span3.date
-          %span.label.label-info.pull-right 21 Feb 2012
-      %hr
-      .row
-        %dl.dl-horizontal
-          %dt Weight
-          %dd 165
+    - collection.each do |date, categories|
+      .activity
+        %hr
+        .row.show-grid
+          .span3
+            %h3= Date.parse(date).strftime("%A")
+          .span3.date
+            %span.label.label-info.pull-right=Date.parse(date).strftime("%e %b %Y")
+        %hr
+        .row
+          - categories.each do |category_id, items|
+            - category = Category.find(category_id)
+            - if category.is_weight?
+              %dl.dl-horizontal
+                %dt= category.name
+                %dd= items.first
 
-        %dl
-          %dt Breakfast
-          %dd
-            %ul.unstyled
-              %li 2 eggs
-              %li coffee
-          %dt Lunch
-          %dd
-            %ul.unstyled
-              %li Steak 60z
-
-
-    .activity
-      %hr
-      .row.show-grid
-        .span3
-          %h3 Sunday
-        .span3.date
-          %span.label.label-info.pull-right 21 Feb 2012
-      %hr
-      .row
-        %dl.dl-horizontal
-          %dt Weight
-          %dd 165
-
-        %dl
-          %dt Breakfast
-          %dd
-            %ul.unstyled
-              %li 2 eggs
-              %li coffee
-          %dt Lunch
-          %dd
-            %ul.unstyled
-              %li Steak 60z
-
-
-
-
-
-
+            - else
+              %dl
+                %dt= category.name
+                %dd
+                  %ul.unstyled
+                    - items.each do |item|
+                      %li= item
 
 -#
 -#%table.table.table-striped
