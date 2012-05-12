@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    name  { Faker::Category.name }
+    name  { Faker::Lorem.word }
 
     factory :weight_category do
       name  "Weight"
