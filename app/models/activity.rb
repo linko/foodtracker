@@ -4,12 +4,8 @@ class Activity < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
-  def latest
-
-  end
-
-  def self.latest period_start = 2.weeks.ago.to_date, period_end = Date.today.to_date
-    activities = Activity.select("to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("updated_at BETWEEN ? and NOW() ",period_start ).group("to_char(updated_at, 'YYYY-MM-DD'), category_id, description")
+  def self.latest(user, period_start = 1.week.ago.to_date, period_end = Date.today.to_date)
+    activities = Activity.select("to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and updated_at BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(updated_at, 'YYYY-MM-DD'), category_id, description")
     activities_by_date = activities.inject(Hash.new{|h,k| h[k] = [] }) {|map, object| map[object.date] << [object.category_id, object.description]; map }
 
     activities_by_category = {}

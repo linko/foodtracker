@@ -4,31 +4,35 @@
       Food tracker
       %small.pull-right= link_to "ADD", new_activity_path, :class => 'btn btn-large btn-primary'
 
-  .activities.well
-    - collection.each do |date, categories|
-      .activity
-        %hr
-        .row.show-grid
-          .span3
-            %h3= Date.parse(date).strftime("%A")
-          .span3.date
-            %span.label.label-info.pull-right=Date.parse(date).strftime("%e %b %Y")
-        %hr
-        .row
-          - categories.each do |category_id, items|
-            - category = Category.find(category_id)
-            - if category.is_weight?
-              %dl.dl-horizontal
-                %dt= category.name
-                %dd= items.first
+  - if collection.any?
+    .activities.well
+      - collection.each do |date, categories|
+        .activity
+          %hr
+          .row.show-grid
+            .span3
+              %h3= Date.parse(date).strftime("%A")
+            .span3.date
+              %span.label.label-info.pull-right=Date.parse(date).strftime("%e %b %Y")
+          %hr
+          .row
+            - categories.each do |category_id, items|
+              - category = Category.find(category_id)
+              - if category.is_weight?
+                %dl.dl-horizontal
+                  %dt= category.name
+                  %dd= items.first
 
-            - else
-              %dl
-                %dt= category.name
-                %dd
-                  %ul.unstyled
-                    - items.each do |item|
-                      %li= item
+              - else
+                %dl
+                  %dt= category.name
+                  %dd
+                    %ul.unstyled
+                      - items.each do |item|
+                        %li= item
+  - else
+    No activities yet.
+    = link_to "Add activity", new_activity_path
 
 -#
 -#%table.table.table-striped
