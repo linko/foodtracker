@@ -1,8 +1,11 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :category_id, :description, :user_id
+  attr_accessible :category_id, :description, :user_id, :category
 
   belongs_to :category
   belongs_to :user
+
+  validates :user_id, :category_id, :description, presence: true
+  validate :validate_weight
 
   def self.latest(user, period_start = 1.week.ago.to_date, period_end = Date.today.to_date)
     activities = Activity.select("to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and updated_at BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(updated_at, 'YYYY-MM-DD'), category_id, description")
@@ -24,5 +27,11 @@ class Activity < ActiveRecord::Base
     #  activities_by_category[day] = {} if activities_by_category[day].nil?
     #end
     activities_by_category.sort.reverse
+  end
+
+  def validate_weight
+    if category.present? && category.is_weight? && description.to_f.zero?
+      errors.add(:description, 'should be numerical')
+    end
   end
 end
