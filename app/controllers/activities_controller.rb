@@ -1,6 +1,8 @@
 class ActivitiesController < ApplicationController
   inherit_resources
 
+  before_filter :authenticate_user!
+
   respond_to :html, :json
 
   def create
