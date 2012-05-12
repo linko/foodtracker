@@ -39,12 +39,13 @@
 
     .edit {
       display: none;
+      margin-left: 10px;
     }
   }
 
   dd:hover {
     .edit {
-      display: block;
+      display: inline-block;
     }
   }
 

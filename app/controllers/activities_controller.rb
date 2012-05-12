@@ -7,11 +7,17 @@ class ActivitiesController < ApplicationController
 
   def create
     params[:activity][:user_id] = current_user.id
-    create!{ collection_path }
+    create! do |format|
+      format.html { redirect_to collection_path }
+      format.json { respond_with resource }
+    end
   end
 
   def update
-    update!{ collection_path }
+    update! do |format|
+      format.html { redirect_to collection_path }
+      format.json { respond_with resource }
+    end
   end
 
 protected
