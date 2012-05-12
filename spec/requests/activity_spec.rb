@@ -24,13 +24,10 @@ describe 'Activity' do
     before { click_on 'ADD' }
 
     context 'when everything ok' do
-      before do
+      specify 'should display new activity in main feed' do
         select @category.name, from: "What"
         fill_in 'Description', with: 'coffee'
         click_button 'Create Activity'
-      end
-
-      specify 'should display new activity in main feed' do
         page.should have_content 'coffee'
       end
     end
