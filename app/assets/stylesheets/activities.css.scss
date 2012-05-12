@@ -35,6 +35,16 @@
       margin-left: 40px;
       width: 240px;
     }
+
+    .edit {
+      display: none;
+    }
+  }
+
+  dd:hover {
+    .edit {
+      display: block;
+    }
   }
 
 

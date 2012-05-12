@@ -21,39 +21,19 @@
               - if category.is_weight?
                 %dl.dl-horizontal
                   %dt= category.name
-                  %dd= items.first
+                  %dd
+                    = items.last[1]
+                    = link_to "edit", edit_activity_path(items.last[0]), class: 'pull-right edit'
 
               - else
                 %dl
                   %dt= category.name
                   %dd
                     %ul.unstyled
-                      - items.each do |item|
-                        %li= item
+                      - items.each do |id, description|
+                        %li
+                          = description
+                          = link_to "edit", edit_activity_path(id), class: 'pull-right edit'
   - else
     No activities yet.
     = link_to "Add activity", new_activity_path
-
--#
--#%table.table.table-striped
--#  %thead
--#    %tr
--#      %th= model_class.human_attribute_name(:id)
--#      %th= model_class.human_attribute_name(:user_id)
--#      %th= model_class.human_attribute_name(:category_id)
--#      %th= model_class.human_attribute_name(:description)
--#      %th= model_class.human_attribute_name(:created_at)
--#      %th=t '.actions', :default => t("helpers.actions")
--#  %tbody
--#    - @activities.each do |activity|
--#      %tr
--#        %td= link_to activity.id, activity_path(activity)
--#        %td= activity.user_id
--#        %td= activity.category_id
--#        %td= activity.description
--#        %td=l activity.created_at
--#        %td
--#          = link_to t('.edit', :default => t("helpers.links.edit")), edit_activity_path(activity), :class => 'btn btn-mini'
--#          = link_to t('.destroy', :default => t("helpers.links.destroy")), activity_path(activity), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
--#
--#

@@ -1,6 +1,6 @@
 = simple_form_for @activity, :html => { :class => 'form-horizontal' } do |f|
-  = f.association :category, label: "What:"
-  = f.input :description, as_null_object: :string
+  = f.association :category, label: "What:", required: false
+  = f.input :description, as_null_object: :string, required: false
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), activities_path, :class => 'btn'

@@ -1,7 +1,7 @@
 FoodTracker::Application.routes.draw do
-  resources :activities
-
   devise_for :users
+
+  resources :activities
 
   root to: 'activities#index'
 end
