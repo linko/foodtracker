@@ -43,7 +43,7 @@
     }
   }
 
-  dd:hover {
+  .dl-horizontal dd:hover, dd li:hover {
     .edit {
       display: inline-block;
     }

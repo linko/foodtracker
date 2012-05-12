@@ -11,9 +11,9 @@
           %hr
           .row.show-grid
             .span3
-              %h3= date.strftime("%A")
+              %h3= date.to_date.strftime("%A")
             .span3.date
-              %span.label.label-info.pull-right= date.strftime("%e %b %Y")
+              %span.label.label-info.pull-right= date.to_date.strftime("%e %b %Y")
           %hr
           .row
             - categories.each do |category_id, items|

@@ -1,6 +1,6 @@
 = simple_form_for @activity, :html => { :class => 'form-horizontal' } do |f|
   = f.association :category, label: "What:", required: false
-  = f.input :date, required: false
+  = f.input :activity_time, required: false
   = f.input :description, as: :string, required: false#, input_html: { name: 'activity[descriptions][]' }
   .form-actions
     = f.button :submit, :class => 'btn-primary'
@@ -11,5 +11,5 @@
 = content_for :javascript do
   -#:javascript
     $(function(){
-      $("#activity_date").datepicker({"dateFormat": "dd/mm/yy"})
+      $("#activity_activity_time").datepicker({"dateFormat": "dd/mm/yy"})
     })
