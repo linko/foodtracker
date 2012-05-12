@@ -37,6 +37,7 @@ class Activity < ActiveRecord::Base
   end
 
   def validate_weight
+
     if category.present? && category.is_weight? && description.to_f.zero?
       errors.add(:description, 'should be numerical')
     end
