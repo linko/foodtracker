@@ -10,6 +10,10 @@ class ActivitiesController < ApplicationController
     create!{ collection_path }
   end
 
+  def update
+    update!{ collection_path }
+  end
+
 protected
 
   def collection

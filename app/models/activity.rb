@@ -1,14 +1,14 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :category_id, :description, :user_id, :category
+  attr_accessible :category_id, :description, :user_id, :category, :date
 
   belongs_to :category
   belongs_to :user
 
-  validates :user_id, :category_id, :description, presence: true
+  validates :user_id, :category_id, :description, :date, presence: true
   validate :validate_weight
 
-  def self.latest(user, period_start = 1.week.ago.to_date, period_end = Date.today.to_date)
-    activities = Activity.select("id, to_char(updated_at, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and updated_at BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(updated_at, 'YYYY-MM-DD'), id, category_id, description")
+  def self.latest(user, period_start = 10.years.ago.to_date, period_end = Date.today.to_date)
+    activities = Activity.select("id, to_char(date, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and date BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(date, 'YYYY-MM-DD'), id, category_id, description")
 
     # group by date
     activities_by_date = activities.inject(Hash.new{|h,k| h[k] = [] }) {|h, object| h[object.date] << [object.category_id, [object.id, object.description]]; h }
@@ -16,6 +16,7 @@ class Activity < ActiveRecord::Base
     # group by category in date subarray
     activities_by_category = {}
     activities_by_date.each do |date, hash|
+      puts " -- date #{date}"
       activities_by_category[date] ||= {}
       hash.each do |k,v|
         activities_by_category[date][k] ||= []
