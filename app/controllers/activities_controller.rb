@@ -1,6 +1,8 @@
 class ActivitiesController < ApplicationController
   inherit_resources
 
+  respond_to :html, :json
+
   def create
     create!{ collection_path }
   end
