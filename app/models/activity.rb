@@ -15,10 +15,12 @@ class Activity < ActiveRecord::Base
 
     activities_by_date.each do |date, hash|
       activities_by_category[date] ||= {}
-        hash.each do |k,v|
+      hash.each do |k,v|
         activities_by_category[date][k] ||= []
         activities_by_category[date][k] << v
       end
+
+      activities_by_category[date] = activities_by_category[date].sort
     end
 
 
@@ -26,6 +28,7 @@ class Activity < ActiveRecord::Base
     #  day = day.to_s("%Y-%m-%d")
     #  activities_by_category[day] = {} if activities_by_category[day].nil?
     #end
+
     activities_by_category.sort.reverse
   end
 
