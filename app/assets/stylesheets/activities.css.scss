@@ -38,16 +38,16 @@
     }
 
     .edit {
-      display: none;
+      /*display: none;*/
       margin-left: 10px;
     }
   }
 
-  .dl-horizontal dd:hover, dd li:hover {
-    .edit {
-      display: inline-block;
-    }
-  }
+  /*.dl-horizontal dd:hover, dd li:hover {*/
+    /*.edit {*/
+      /*display: inline-block;*/
+    /*}*/
+  /*}*/
 
 }
 

@@ -23,7 +23,7 @@
                   %dt= category.name
                   %dd
                     = items.last[1]
-                    = link_to "edit", edit_activity_path(items.last[0]), class: 'edit'
+                    = link_to "edit", edit_activity_path(items.last[0]), class: 'edit pull-right'
 
               - else
                 %dl
@@ -33,7 +33,7 @@
                       - items.each do |id, description|
                         %li
                           = description
-                          = link_to "edit", edit_activity_path(id), class: 'edit'
+                          = link_to "edit", edit_activity_path(id), class: 'edit pull-right'
   - else
     No activities yet.
     = link_to "Add activity", new_activity_path
