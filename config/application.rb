@@ -65,5 +65,12 @@ module FoodTracker
     config.generators.stylesheet_engine = :scss
 
     config.assets.initialize_on_precompile = false
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*'
+      end
+    end
   end
 end

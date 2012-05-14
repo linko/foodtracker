@@ -11,6 +11,7 @@ gem "inherited_resources"
 gem "has_scope"
 gem "simple_form"
 gem 'heroku'
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :assets do
