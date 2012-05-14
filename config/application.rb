@@ -69,7 +69,7 @@ module FoodTracker
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*'
+        resource '/*', :headers => 'x-domain-token'
       end
     end
   end
