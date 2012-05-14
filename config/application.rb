@@ -12,6 +12,15 @@ end
 module FoodTracker
   class Application < Rails::Application
 
+    config.middleware.insert_before Warden::Manager, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: ['Origin', 'Accept', 'Content-Type'],
+          methods: [:get, :put, :create, :delete, :post]
+      end
+    end
+
     config.generators do |g|
       g.test_framework = :rspec
       g.helper = false
@@ -66,13 +75,6 @@ module FoodTracker
 
     config.assets.initialize_on_precompile = false
 
-    config.middleware.insert_before Warden::Manager, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-          headers: ['Origin', 'Accept', 'Content-Type'],
-          methods: [:get, :put, :create, :delete]
-      end
-    end
+
   end
 end
