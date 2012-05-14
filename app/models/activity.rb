@@ -8,7 +8,7 @@ class Activity < ActiveRecord::Base
   validate :validate_weight
 
   def self.latest(user, period_start = 10.years.ago.to_date, period_end = Date.today.to_date)
-    activities = Activity.select("id, to_char(date, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and date BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(date, 'YYYY-MM-DD'), id, category_id, description")
+    activities = Activity.select("id, to_char(date, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ?",user.id ).group("to_char(date, 'YYYY-MM-DD'), id, category_id, description")
 
     # group by date
     activities_by_date = activities.inject(Hash.new{|h,k| h[k] = [] }) {|h, object| h[object.date] << [object.category_id, [object.id, object.description]]; h }
