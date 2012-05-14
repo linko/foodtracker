@@ -66,10 +66,12 @@ module FoodTracker
 
     config.assets.initialize_on_precompile = false
 
-    config.middleware.use Rack::Cors do
+    config.middleware.insert_before Warden::Manager, Rack::Cors do
       allow do
         origins '*'
-        resource '/*', :headers => 'x-domain-token'
+        resource '*',
+          headers: ['Origin', 'Accept', 'Content-Type'],
+          methods: [:get, :put, :create, :delete]
       end
     end
   end
