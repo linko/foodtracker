@@ -5,6 +5,10 @@ class ActivitiesController < ApplicationController
   inherit_resources
   respond_to :html, :json
 
+  def new
+    @activity = Activity.new( date: Date.today.strftime("%Y-%m-%d"))
+  end
+
   def create
     descriptions = params[:activity][:descriptions].select{ |d| !d.blank? }
     params[:activity].delete(:descriptions)

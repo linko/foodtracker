@@ -3,6 +3,6 @@ FactoryGirl.define do
     user
     category
     description     { Faker::Lorem.word }
-    activity_time   { Date.yesterday    }
+    date   { Date.yesterday    }
   end
 end

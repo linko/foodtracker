@@ -1,6 +1,6 @@
 = simple_form_for @activity, :html => { :class => 'form-horizontal' } do |f|
   = f.association :category, label: "What", required: false
-  = f.input :activity_time, required: false, as: :string
+  = f.input :date, required: false, as: :string
   - if @activity.persisted?
     = f.input :description, as: :string, required: false
   - else
@@ -26,7 +26,7 @@
 = content_for :javascript do
   :javascript
     $(function(){
-      $("#activity_activity_time").datepicker({"dateFormat": "dd/mm/yy"})
+      $("#activity_date").datepicker({"dateFormat": "yy-mm-dd"})
 
       $('.icon-plus').click(function(){
         $('.descriptions').append($('.template').html())

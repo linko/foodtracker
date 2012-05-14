@@ -1,14 +1,14 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :category_id, :description, :user_id, :category, :activity_time
+  attr_accessible :category_id, :description, :user_id, :category, :date
 
   belongs_to :category
   belongs_to :user
 
-  validates :user_id, :category_id, :description, :activity_time, presence: true
+  validates :user_id, :category_id, :description, :date, presence: true
   validate :validate_weight
 
   def self.latest(user, period_start = 10.years.ago.to_date, period_end = Date.today.to_date)
-    activities = Activity.select("id, to_char(activity_time, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and activity_time BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(activity_time, 'YYYY-MM-DD'), id, category_id, description")
+    activities = Activity.select("id, to_char(date, 'YYYY-MM-DD') as date, category_id, description").where("user_id = ? and date BETWEEN ? and NOW() ",user.id, period_start ).group("to_char(date, 'YYYY-MM-DD'), id, category_id, description")
 
     # group by date
     activities_by_date = activities.inject(Hash.new{|h,k| h[k] = [] }) {|h, object| h[object.date] << [object.category_id, [object.id, object.description]]; h }
