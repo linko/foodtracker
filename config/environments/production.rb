@@ -65,7 +65,7 @@ FoodTracker::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'smooth-beach-3083.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'foodtrackerhq.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -73,7 +73,7 @@ FoodTracker::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "smooth-beach-3083.herokuapp.com",
+    domain: "foodtrackerhq.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'foodtrakerhq@gmail.com',
