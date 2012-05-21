@@ -76,7 +76,7 @@ FoodTracker::Application.configure do
     domain: "foodtrackerhq.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'foodtrakerhq@gmail.com',
+    user_name: 'foodtrackerhq@gmail.com',
     password: 'foodtraker123'
   }
 end
