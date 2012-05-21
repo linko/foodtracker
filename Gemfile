@@ -12,6 +12,8 @@ gem "has_scope"
 gem "simple_form"
 gem 'heroku'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'uuid'
+gem 'fuubar'
 
 
 group :assets do

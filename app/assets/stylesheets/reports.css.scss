@@ -1,0 +1,23 @@
+// Place all the styles related to the reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.report {
+  ul {
+    list-style: none;
+  }
+
+  th {
+    width: 100px;
+  }
+
+
+  td, th {
+    text-align: center;
+  }
+
+  .btn-success {
+    margin-bottom: 10px;
+  }
+
+}

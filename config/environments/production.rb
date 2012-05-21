@@ -76,7 +76,7 @@ FoodTracker::Application.configure do
     domain: "smooth-beach-3083.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'foodtraker@gmail.com',
+    user_name: 'foodtrakerhq@gmail.com',
     password: 'foodtraker123'
   }
 end

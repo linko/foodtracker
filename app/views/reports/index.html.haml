@@ -1,0 +1,33 @@
+.report
+  - if @activities.any?
+    - if display_create_report_form?
+      %p
+        = form_tag new_report_path, method: :get do |f|
+          = select_tag :period, options_for_select(Report::PERIODS, params[:period])
+          = submit_tag 'Send email', class: 'btn btn-success'
+
+    %table.table.table-bordered
+      %tr.well
+        %th.day Day
+        - @categories.each do |category|
+          %th= category.name
+      - @activities.each do |date, activities_by_category|
+        %tr
+          %td= date.to_date.strftime("%A %e %b %Y")
+          - @categories.each do |category|
+            %td
+              - if activities_by_category[category.id].present?
+                %ul.unstyled
+                  - activities_by_category[category.id].each do |item|
+                    %li= item
+  - else
+    No activities
+
+= content_for :javascript do
+  :javascript
+    $(function(){
+      $("#period").change(function(){
+        location.href = '/reports?period='+$("#period").val();
+      })
+    })
+
