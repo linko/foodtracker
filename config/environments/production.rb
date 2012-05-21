@@ -77,6 +77,6 @@ FoodTracker::Application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'foodtrackerhq@gmail.com',
-    password: 'foodtraker123'
+    password: 'foodtracker123'
   }
 end
