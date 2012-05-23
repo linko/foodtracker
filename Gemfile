@@ -14,6 +14,7 @@ gem 'heroku'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'uuid'
 gem 'fuubar'
+gem 'letter_opener'
 
 
 group :assets do
