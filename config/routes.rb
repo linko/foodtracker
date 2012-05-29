@@ -3,7 +3,7 @@ FoodTracker::Application.routes.draw do
   devise_for :users,
   :controllers => {
   #sessions: "sessions",
-  registrations: "registrations"
+  #registrations: "registrations"
   }
 
   resources :activities
