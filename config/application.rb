@@ -16,7 +16,7 @@ module FoodTracker
       allow do
         origins '*'
         resource '*',
-          headers: ['Origin', 'Accept', 'Content-Type', 'Cookie', 'Host'],
+          headers: ['Origin', 'Accept', 'Content-Type'],
           methods: [:get, :post, :put, :delete]
       end
     end
