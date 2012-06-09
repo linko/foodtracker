@@ -41,10 +41,11 @@ class ActivitiesController < ApplicationController
           format.json { render json: @activity , status: :created }
         end
       else
-        respond_to do |format|
-          format.html { render :edit }
-          format.json { render json: { errors: @activity.errors, status: :unprocessable_entity}  }
-        end
+        respond_with @activity
+        #respond_to do |format|
+        #  format.html { render :edit }
+        #  format.json { render json: { errors: @activity.errors, status: :unprocessable_entity}  }
+        #end
       end
     end
   end
