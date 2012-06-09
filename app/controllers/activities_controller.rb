@@ -41,6 +41,7 @@ class ActivitiesController < ApplicationController
           format.json { render json: @activity , status: :created }
         end
       else
+        headers["Access-Control-Allow-Origin"] = '*'
         respond_with @activity
         #respond_to do |format|
         #  format.html { render :edit }
