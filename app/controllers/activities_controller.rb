@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     if descriptions.any? && descriptions.size > 1
       @activities = []
 
-      descriptions .each do |description|
+      descriptions.each do |description|
         activity             = Activity.new(params[:activity])
         activity.user        = current_user
         activity.description = description
@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
       else
         respond_to do |format|
           format.html { render :edit }
-          format.json { render json: @activity.errors, status: :unprocessable_entity  }
+          format.json { render json: { errors: @activity.errors, status: :unprocessable_entity}  }
         end
       end
     end
@@ -60,7 +60,7 @@ class ActivitiesController < ApplicationController
     else
       respond_to do |format|
         format.html { render :edit }
-        format.json { render json: @activity.errors, status: :unprocessable_entity  }
+        format.json { render json: { errors: @activity.errors, status: :unprocessable_entity}  }
       end
     end
   end
