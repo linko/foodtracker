@@ -10,7 +10,12 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    descriptions = params[:activity][:descriptions].select{ |d| !d.blank? }
+    descriptions = []
+
+    if params[:activity][:descriptions].present? && params[:activity][:descriptions].any?
+      descriptions = params[:activity][:descriptions].select{ |d| !d.blank? }
+    end
+
     params[:activity].delete(:descriptions)
 
     if descriptions.any? && descriptions.size > 1
