@@ -15,6 +15,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'uuid'
 gem 'fuubar'
 gem 'letter_opener'
+gem 'airbrake'
 
 
 group :assets do
