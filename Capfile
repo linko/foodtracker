@@ -19,12 +19,12 @@ require 'capistrano/ext/multistage'
 
 
 #== Recipes
-set :recipes_dir, File.expand_path('/cap-recipes', __FILE__)
-load recipes_dir + '/config/recipes/base'
-load recipes_dir + '/config/recipes/nginx'
-load recipes_dir + '/config/recipes/postgresql'
-load recipes_dir + '/config/recipes/rbenv'
-load recipes_dir + '/config/recipes/unicorn'
+#set :recipes_dir, File.expand_path('/cap-recipes', __FILE__)
+#load recipes_dir + '/config/recipes/base'
+#load recipes_dir + '/config/recipes/nginx'
+#load recipes_dir + '/config/recipes/postgresql'
+#load recipes_dir + '/config/recipes/rbenv'
+#load recipes_dir + '/config/recipes/unicorn'
 
 #== Fallback vars for old recipes
 set(:current_path) { deploy_to }
