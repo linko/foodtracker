@@ -1,0 +1,3 @@
+[submodule "cap-recipes"]
+	path = cap-recipes
+	url = git@bitbucket.org:linkoivan/cap-recipes.git
