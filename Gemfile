@@ -17,6 +17,7 @@ gem 'fuubar'
 gem 'letter_opener'
 gem 'airbrake'
 
+gem 'sass-rails',   '~> 3.2.3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
