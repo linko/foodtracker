@@ -19,3 +19,5 @@
 .rvmrc
 .secret
 .idea
+cap-recipes
+.ruby-*
