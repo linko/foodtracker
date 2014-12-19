@@ -3,7 +3,7 @@ require 'sushi/ssh'
 require 'capistrano_colors'
 require 'capistrano-unicorn'
 
-server '82.196.6.223', :web, :app, :db, primary: true
+server '188.166.62.11', :web, :app, :db, primary: true
 
 set :domain_name,     'foodtracker.hnd.sm.ua'
 set :ruby_version,    '2.0.0-p353'
