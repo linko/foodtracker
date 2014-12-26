@@ -15,6 +15,27 @@
 //@import "bootstrap-sprockets";
 @import "bootstrap";
 
-.text {
-  height: 200px;
+body {
+  margin-top: 50px;
+  /* Margin bottom by footer height */
+  margin-bottom: 30px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.center_div{
+    margin: 0 auto;
+    width:40% /* value of your choice which suits your alignment */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #f5f5f5;
 }

@@ -15,7 +15,7 @@
             .span3.date
               %span.label.label-info.pull-right= date.to_date.strftime("%e %b %Y")
           %hr
-          .row
+          .row{ style: 'padding-right:10px;' }
             - categories.each do |category_id, items|
               - category = Category.find(category_id)
               - if category.is_weight?
@@ -23,7 +23,7 @@
                   %dt= category.name
                   %dd
                     = items.last[1]
-                    = link_to "edit", edit_activity_path(items.last[0]), class: 'edit pull-right'
+                    = link_to "edit", edit_activity_path(items.last[0]), class: 'btn btn-xs btn-primary pull-right'
 
               - else
                 %dl
@@ -33,7 +33,8 @@
                       - items.each do |id, description|
                         %li
                           = description
-                          = link_to "edit", edit_activity_path(id), class: 'edit pull-right'
+                          = link_to "edit", edit_activity_path(id), class: 'btn btn-xs btn-primary pull-right'
+
   - else
     No activities yet.
     = link_to "Add activity", new_activity_path

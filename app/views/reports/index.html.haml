@@ -3,7 +3,8 @@
     - if display_create_report_form?
       %p
         = form_tag new_report_path, method: :get do |f|
-          = select_tag :period, options_for_select(Report::PERIODS, params[:period])
+          .col-md-4
+            = select_tag :period, options_for_select(Report::PERIODS, params[:period]), class: 'form-control'
           = submit_tag 'Send email', class: 'btn btn-success'
 
     %table.table.table-bordered
@@ -21,7 +22,7 @@
                   - activities_by_category[category.id].each do |item|
                     %li= item
   - else
-    No activities
+    %h2.text-center No activities
 
 = content_for :javascript do
   :javascript
