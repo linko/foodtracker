@@ -23,12 +23,3 @@
                     %li= item
   - else
     %h2.text-center No activities
-
-= content_for :javascript do
-  :javascript
-    $(function(){
-      $("#period").change(function(){
-        location.href = '/reports?period='+$("#period").val();
-      })
-    })
-
