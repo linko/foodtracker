@@ -21,4 +21,4 @@
 .idea
 cap-recipes
 .ruby-*
-config/*.yml
+config/database.yml
