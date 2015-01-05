@@ -58,7 +58,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-webkit (0.11.0)
+    capybara-webkit (0.13.2)
       capybara (>= 1.0.0, < 1.2)
       json
     childprocess (0.3.2)
@@ -252,6 +252,11 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.33)
     uglifier (1.2.4)
       execjs (>= 0.3.0)
@@ -315,6 +320,7 @@ DEPENDENCIES
   sushi
   therubyracer
   thin
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
   uuid

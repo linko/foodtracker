@@ -1,39 +1,26 @@
-= simple_form_for @activity, :html => { :class => 'form-horizontal' } do |f|
-  = f.association :category, label: "What", required: false
-  = f.input :date, required: false, as: :string
+= simple_form_for @activity, html: { class: 'form-horizontal' } do |f|
+  = f.association :category, label: "What", required: false, input_html: { class: 'form-control' }
+  = f.input :date, required: false, as: :string, input_html: { class: 'form-control' }
   - if @activity.persisted?
-    = f.input :description, as: :string, required: false
+    = f.input :description, as: :string, required: false, input_html: { class: 'form-control' }
   - else
     .descriptions
-      = f.input :description, as: :string, required: false, input_html: { name: 'activity[descriptions][]' }
-    = link_to " add description", 'javascript:', class: 'icon-plus controls'
+      = f.input :description, as: :string, required: false, input_html: { name: 'activity[descriptions][]', class: 'form-control' }
+    %br
+    .pull-right
+      = link_to ' add description', 'javascript:', class: 'icon-plus controls'
 
+  %hr
   .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), activities_path, :class => 'btn'
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', default: t('helpers.links.cancel')), activities_path, class: 'btn'
     - if @activity.persisted?
-      = link_to 'Delete', activity_path(@activity), method: :delete, class: 'btn btn-danger', confirm: "Are you sure you want to delete entry?"
+      = link_to 'Delete', activity_path(@activity), method: :delete, class: 'btn btn-danger', confirm: 'Are you sure you want to delete entry?'
 
-.template{style: "display: none"}
+.template.hidden
   .control-group.string.optional
-    %label.string.optional.control-label{:for => "activity_description"} Description
+    %label.string.optional.control-label{ for: 'activity_description' } Description
     .controls
-      %input#activity_description.string.optional{:name => "activity[descriptions][]", :size => "50", :type => "text", :value => ""}/
-      = link_to "javascript:" do
-        %span{ class: "icon-trash" } &nbsp;
-
-
-= content_for :javascript do
-  :javascript
-    $(function(){
-      $("#activity_date").datepicker({"dateFormat": "yy-mm-dd"})
-
-      $('.icon-plus').click(function(){
-        $('.descriptions').append($('.template').html())
-      })
-
-      $('.icon-trash').live( 'click', function(){
-        $(this).closest(".control-group").remove();
-      })
-
-    })
+      %input#activity_description.string.optional{ name: 'activity[descriptions][]', size: '50', type: 'text', value: '', class: 'form-control' }
+      = link_to 'javascript:' do
+        %span{ class: 'icon-trash' } &nbsp;

@@ -2,7 +2,7 @@
   .page-header
     %h1
       Food tracker
-      %small.pull-right= link_to "ADD", new_activity_path, :class => 'btn btn-large btn-primary'
+      %small.pull-right= link_to 'ADD', new_activity_path, class: 'btn btn-large btn-primary'
 
   - if collection.any?
     .activities.well
@@ -11,9 +11,9 @@
           %hr
           .row.show-grid
             .span3
-              %h3= date.to_date.strftime("%A")
+              %h3= date.to_date.strftime('%A')
             .span3.date
-              %span.label.label-info.pull-right= date.to_date.strftime("%e %b %Y")
+              %span.label.label-info.pull-right= date.to_date.strftime('%e %b %Y')
           %hr
           .row
             - categories.each do |category_id, items|
@@ -23,7 +23,7 @@
                   %dt= category.name
                   %dd
                     = items.last[1]
-                    = link_to "edit", edit_activity_path(items.last[0]), class: 'edit pull-right'
+                    = link_to 'edit', edit_activity_path(items.last[0]), class: 'edit btn btn-xs btn-primary pull-right'
 
               - else
                 %dl
@@ -33,7 +33,8 @@
                       - items.each do |id, description|
                         %li
                           = description
-                          = link_to "edit", edit_activity_path(id), class: 'edit pull-right'
+                          = link_to 'edit', edit_activity_path(id), class: 'edit  btn btn-xs btn-primary pull-right'
+
   - else
     No activities yet.
-    = link_to "Add activity", new_activity_path
+    = link_to 'Add activity', new_activity_path
