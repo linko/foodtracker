@@ -2,7 +2,6 @@ require 'recap/recipes/rails'
 require 'sushi/ssh'
 require 'capistrano_colors'
 require 'capistrano-unicorn'
-require 'airbrake/capistrano'
 
 server '188.166.62.11', :web, :app, :db, primary: true
 
@@ -39,5 +38,5 @@ set :unicorn_log,     -> { "#{shared_path}/log/unicorn.log"   }
 set :unicorn_workers, 1
 
 #after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
-after 'deploy:restart', 'unicorn:restart'   # app preloaded
+after 'deploy:restart', 'unicorn:duplicate'   # app preloaded
 #after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
