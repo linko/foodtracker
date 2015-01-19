@@ -41,8 +41,16 @@
       /*display: none;*/
       margin-left: 10px;
       margin-right: 10px;
+      clear:right;
+    }
+
+    ul {
+      li {
+        margin-bottom: 10px;
+      }
     }
   }
+
 
   /*.dl-horizontal dd:hover, dd li:hover {*/
     /*.edit {*/
