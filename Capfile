@@ -2,6 +2,7 @@ require 'recap/recipes/rails'
 require 'sushi/ssh'
 require 'capistrano_colors'
 require 'capistrano-unicorn'
+require 'airbrake/capistrano'
 
 server '188.166.62.11', :web, :app, :db, primary: true
 
