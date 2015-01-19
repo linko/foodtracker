@@ -18,7 +18,6 @@ set :stages, %w(production staging)
 set :default_stage, 'production'
 require 'capistrano/ext/multistage'
 
-
 #== Recipes
 #set :recipes_dir, File.expand_path('/cap-recipes', __FILE__)
 #load recipes_dir + '/config/recipes/base'
@@ -30,8 +29,10 @@ require 'capistrano/ext/multistage'
 #== Fallback vars for old recipes
 set(:current_path) { deploy_to }
 set(:shared_path)  { deploy_to }
-
+set(:current_release)  { deploy_to }
+set(:current_revision) { '1.0' }
 set(:rails_server)  { 'unicorn' }
+
 set :unicorn_user,    -> { nil}
 set :unicorn_pid,     -> { "#{shared_path}/tmp/pids/unicorn.pid"  }
 set :unicorn_config,  -> { "#{shared_path}/config/unicorn.rb" }
